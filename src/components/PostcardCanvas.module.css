@@ -1,0 +1,179 @@
+.canvas {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  border-radius: 8px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+
+/* Lined paper texture (only shown when no image) */
+.linesOverlay {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 31px,
+    rgba(0,0,0,0.025) 31px,
+    rgba(0,0,0,0.025) 32px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Background image */
+.imageBg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+/* Gradient scrim so text stays readable over any photo */
+.imageScrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(0,0,0,0.08) 0%,
+    rgba(0,0,0,0.38) 55%,
+    rgba(0,0,0,0.62) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* All direct children sit above the image layers */
+.canvas > *:not(.imageBg):not(.imageScrim):not(.linesOverlay) {
+  position: relative;
+  z-index: 2;
+}
+
+/* Sizes */
+.sm { padding: 12px 14px; border-radius: 6px; }
+.md { padding: 20px 24px; }
+.lg { padding: 28px 32px; }
+
+/* Stamp */
+.stamp {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border: 1.5px dashed;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.35;
+  z-index: 3;
+}
+.sm .stamp { width: 24px; height: 24px; top: 8px; right: 10px; }
+
+.stampInner {
+  font-size: 14px;
+}
+
+/* Location */
+.location {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  font-weight: 300;
+}
+.sm .location { font-size: 9px; }
+
+/* Message */
+.messageArea {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+}
+
+.message {
+  font-size: 16px;
+  line-height: 1.65;
+  text-align: center;
+  max-width: 88%;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.sm .message { font-size: 11px; line-height: 1.5; }
+.lg .message { font-size: 20px; }
+
+.placeholder {
+  font-size: 15px;
+  opacity: 0.25;
+  font-style: italic;
+  text-align: center;
+}
+.sm .placeholder { font-size: 10px; }
+
+/* Stickers */
+.stickers {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.sticker {
+  font-size: 16px;
+  line-height: 1;
+}
+.sm .sticker { font-size: 11px; }
+
+/* From */
+.from {
+  font-size: 12px;
+  text-align: right;
+  opacity: 0.6;
+  font-style: italic;
+  font-weight: 300;
+}
+.sm .from { font-size: 9px; }
+
+/* Divider */
+.dividerLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  border-left: 1px dashed;
+  opacity: 0.2;
+  z-index: 2;
+}
+
+/* Animations */
+@keyframes fadeInCard {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes slideUpCard {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulseCard {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.015); }
+}
+
+.animFade { animation: fadeInCard 0.9s ease both; }
+.animFloat { animation: floatCard 4s ease-in-out infinite; }
+.animSlide { animation: slideUpCard 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animPulse { animation: pulseCard 3s ease-in-out infinite; }

@@ -1,0 +1,294 @@
+.toolbar {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--border);
+}
+
+.tab {
+  padding: 11px 6px;
+  font-size: 13px;
+  font-weight: 400;
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  transition: all 0.15s;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  position: relative;
+}
+
+.tab:hover {
+  color: var(--text);
+  background: var(--sand);
+}
+
+.tabActive {
+  color: var(--accent);
+  font-weight: 500;
+  border-bottom-color: var(--accent);
+  background: white;
+}
+
+/* Red dot indicator when an image is set */
+.imageDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  position: absolute;
+  top: 7px;
+  right: 10px;
+}
+
+.body {
+  padding: 16px;
+  min-height: 200px;
+}
+
+.section {
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  resize: vertical;
+  background: var(--sand);
+  color: var(--text);
+  line-height: 1.55;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.input {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  background: var(--sand);
+  color: var(--text);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+/* Templates */
+.templateGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.templateBtn {
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.templateActive {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Stickers */
+.stickerGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.stickerBtn {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  border: 1.5px solid;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stickerActive {
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+/* Fonts */
+.fontList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fontBtn {
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1.5px solid;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.fontActive {
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+/* â”€â”€ Image upload â”€â”€ */
+
+/* Drop zone */
+.dropZone {
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  padding: 32px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--sand);
+}
+
+.dropZone:hover {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.dropZoneActive {
+  border-color: var(--accent);
+  background: var(--accent-light);
+  transform: scale(1.01);
+  box-shadow: 0 0 0 3px rgba(61, 90, 71, 0.1);
+}
+
+.dropIcon {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.dropTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.dropSub {
+  font-size: 13px;
+  color: var(--text-light);
+  margin-bottom: 8px;
+}
+
+.dropLink {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.dropFormats {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+/* Image preview */
+.imagePreviewWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.imagePreview {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  border: 1px solid var(--border);
+}
+
+.previewImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.imageOverlayBadge {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.55);
+  color: white;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+}
+
+.imageActions {
+  display: flex;
+  gap: 8px;
+}
+
+.imageReplaceBtn {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: white;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.imageReplaceBtn:hover { background: var(--stone); }
+
+.imageRemoveBtn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #f0c4c4;
+  background: #fff5f5;
+  font-size: 13px;
+  font-family: inherit;
+  color: #c0392b;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.imageRemoveBtn:hover { background: #ffe8e8; }
+
+.imageHint {
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+  text-align: center;
+}
