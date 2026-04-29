@@ -5,43 +5,17 @@ A React + TypeScript app for creating and sharing animated digital postcards wit
 ## Features
 
 - **Postcard Editor** — 8 templates, live preview, stickers, font picker, 5 animations
-- **AI Suggestions** — Claude-powered message generator (requires API key)
 - **Groups** — Create groups with shareable invite codes, send postcards to a shared feed
 - **Preview Page** — Shareable link per postcard with envelope reveal animation
-- **Persistence** — State saved to localStorage (swap for Supabase for multi-user)
+- **Persistence** — State saved
 
-## Quick Start
-
+## how to start the project 
 ```bash
 npm install
 npm run dev
 ```
 
 Open [http://localhost:5173](http://localhost:5173).
-
-## AI Message Suggestions
-
-The "✦ AI suggest" button in the editor calls the Anthropic API. To enable it:
-
-1. Get an API key from [console.anthropic.com](https://console.anthropic.com)
-2. Create a `.env` file in the project root:
-
-```
-VITE_ANTHROPIC_API_KEY=sk-ant-...
-```
-
-3. Update `src/utils/api.ts` to pass the key in the Authorization header:
-
-```ts
-headers: {
-  'Content-Type': 'application/json',
-  'x-api-key': import.meta.env.VITE_ANTHROPIC_API_KEY,
-  'anthropic-version': '2023-06-01',
-  'anthropic-dangerous-direct-browser-access': 'true',
-},
-```
-
-> ⚠️ For production, proxy API calls through your own backend to keep the key secret.
 
 ## Project Structure
 
@@ -60,16 +34,12 @@ src/
 │   └── constants.ts            # Templates, stickers, fonts, sample data
 ├── hooks/
 │   └── useGroups.ts            # Group + postcard state (localStorage)
-├── utils/
-│   └── api.ts                  # Anthropic API helpers
 ├── types.ts                    # Shared TypeScript types
 ├── App.tsx                     # Root + routing
 └── main.tsx                    # Entry point
 ```
 
-## Connecting a Backend (Supabase)
-
-Replace `useGroups.ts` with Supabase queries. Suggested schema:
+## Backend Supabase
 
 ```sql
 -- Users (handled by Supabase Auth)
@@ -99,13 +69,4 @@ create table postcards (
   anim text,
   created_at timestamptz default now()
 );
-```
-
-## Tech Stack
-
-- React 18 + TypeScript
-- Vite
-- React Router v6
-- CSS Modules
-- Anthropic Claude API (optional, for AI suggestions)
-# 1962final
+```# digitalpostcards
